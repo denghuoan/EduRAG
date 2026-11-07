@@ -1,0 +1,114 @@
+# ============================================================
+# EduRAG 项目 .gitignore
+# ============================================================
+
+# ---------- 系统文件 ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ---------- IDE / 编辑器 ----------
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+.jbeval/
+.fleet/
+.workbuddy/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ---------- 虚拟环境 ----------
+.venv/
+venv/
+env/
+ENV/
+.conda/
+.python-version
+
+# ---------- 敏感配置（禁止提交，参考 config.ini.example / .env.example）----------
+.env
+.env.*
+!.env.example
+config.ini
+config_local.ini
+!config.ini.example
+secrets.json
+*.pem
+*.key
+credentials*
+
+# ---------- 模型权重（本地下载，体积大，勿入库）----------
+# rag_qa/models 约 6.2G：bge-m3 / bge-reranker-large / bert-base-chinese 等
+rag_qa/models/
+models/
+*.safetensors
+*.bin
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.msgpack
+*.gguf
+
+# ---------- 向量库 / 缓存 ----------
+chroma_db/
+chroma/
+milvus_data/
+volumes/
+*.faiss
+*.index
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ---------- 日志与运行时产物 ----------
+logs/
+*.log
+*.log.*
+*.pid
+*.tmp
+*.bak
+temp/
+tmp/
+# 根目录 demo 运行产生的对话记忆
+/history.json
+
+# ---------- 评测 / 中间结果 ----------
+rag_qa/rag_assessment/results/
+results/
+outputs/
+*.eval_result.json

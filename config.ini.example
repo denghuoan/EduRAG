@@ -1,0 +1,38 @@
+# 管理整个项目的配置
+# 复制为 config.ini 后填入真实值；config.ini 已在 .gitignore 中被忽略，勿提交
+[mysql]
+host = localhost
+user = root
+password = your_mysql_password
+database = subjects_kg
+
+[redis]
+host = localhost
+port = 6379
+password = your_redis_password
+db = 0
+
+[logger]
+log_file = logs/app.log
+
+[milvus]
+host = localhost
+port = 19530
+database_name = itcast
+collection_name = edurag_final
+
+[llm]
+model = deepseek-flash
+dashscope_api_key = sk-your-api-key
+dashscope_base_url = https://api.deepseek.com
+
+[retrieval]
+parent_chunk_size = 1200
+child_chunk_size = 300
+chunk_overlap = 50
+retrieval_k = 3
+candidate_m = 2
+
+[app]
+valid_sources = ['ai', 'java', 'test', 'ops', 'bigdata']
+customer_service_phone = 12345678
