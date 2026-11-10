@@ -10,4 +10,5 @@ sys.path.insert(0, rag_qa_path)
 # 具体的导包动作
 from core.prompts import RAGPrompts
 from core.vector_store import VectorStore
-from core.rag_system import RAGSystem
+# from core.rag_system import RAGSystem
+from core.new_rag_system import RAGSystem
