@@ -109,6 +109,22 @@ class IntegratedQASystem:
     def get_session_history(self,session_id):
         return self._fetch_recent_history(session_id)
 
+    def clear_session_history(self, session_id) -> bool:
+        try:
+            self.mysql_client.cursor.execute("""
+                DELETE
+                FROM conversation
+                WHERE session_id = %s
+            """, (session_id))
+            self.mysql_client.connection.commit()
+            self.logger.info(f"会话 {session_id} 历史已清除")
+            return True
+
+        except pymysql.MySQLError as e:
+            self.logger.error(f"清除会话历史失败: {e}")
+            self.mysql_client.connection.rollback()
+            return False
+
     # 更新历史会话
     def update_session_history(self,session_id:str, question:str, answer:str):
         try:
@@ -146,9 +162,6 @@ class IntegratedQASystem:
             self.logger.error(f"更新会话历史意外错误: {e}")
             self.mysql_client.connection.rollback()
             raise
-
-
-
 
     # 查询集成系统,支持对话历史和流式输出
     def query(self, query, source_filter=None, session_id=None):
